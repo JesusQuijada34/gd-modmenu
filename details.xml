@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <app>
-  <publisher>Tobyadd</publisher>
+  <publisher>influent</publisher>
   <app>gd-modmenu</app>
   <name>GDH Geometry Dash Mod Menu</name>
-  <version>v5.0.0-26.08-21.56-AlphaCube</version>
-  <correlationid>bd916f267a0b1470899c2c769f67a85a538a5a4e00a0e189e16c19b1343d18f8</correlationid>
+  <version>v5.0-26.08-21.56</version>
+  <correlationid>30f5a2bc3fe039b3d80986b6444a14d240e09b9b35b0aef400d379e8c69dfd30</correlationid>
   <rate>Todas las edades</rate>
-  <author>TobyAdd</author>
+  <author>JesusQuijada34</author>
   <platform>AlphaCube</platform>
   <description>Estructura reparada por MoonFix</description>
   <year>2026</year>
