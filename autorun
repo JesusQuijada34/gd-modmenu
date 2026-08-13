@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+# Autorun script for gd-modmenu
+/usr/bin/python3 ./gd-modmenu.py
