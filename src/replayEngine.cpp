@@ -1,6 +1,21 @@
 #include "replayEngine.hpp"
 #include "config.hpp"
 #include "gui.hpp"
+#include <cctype>
+
+namespace {
+bool is_safe_macro_name(const std::string& name) {
+    if (name.empty() || name.size() > 128 || name == "." || name == "..")
+        return false;
+    if (name.find("..") != std::string::npos || name.find('/') != std::string::npos || name.find('\\') != std::string::npos)
+        return false;
+    for (unsigned char ch : name) {
+        if (!(std::isalnum(ch) || ch == '_' || ch == '-' || ch == '.'))
+            return false;
+    }
+    return true;
+}
+}
 
 unsigned ReplayEngine::get_frame() {
     auto &config = Config::get();
@@ -70,6 +85,8 @@ int ReplayEngine::get_current_index() {
 std::string ReplayEngine::save(std::string name) {
     auto& config = Config::get();
 
+    if (!is_safe_macro_name(name))
+        return "Invalid macro name";
     if (m_inputFrames_p1.empty() && m_inputFrames_p2.empty())
         return "Replay doesn't have actions";
 
@@ -77,7 +94,9 @@ std::string ReplayEngine::save(std::string name) {
         return save2(name);
     }
 
-    std::ofstream file(folderMacroPath / std::string(name + ".re3"), std::ios::binary);    
+    std::ofstream file(folderMacroPath / std::string(name + ".re3"), std::ios::binary);
+    if (!file)
+        return "Failed to open file for writing";
 
     float tps_value = config.get("tps_value", 240.f);
     file.write(reinterpret_cast<char *>(&tps_value), sizeof(tps_value));
@@ -232,8 +251,8 @@ std::string ReplayEngine::load_v3(std::string name, bool only_p1, bool only_p2) 
 }
 
 std::string ReplayEngine::load(std::string name, bool only_p1, bool only_p2) {
-    if (name.empty())
-        return "Empty macro name is not allowed";
+    if (!is_safe_macro_name(name))
+        return "Invalid macro name";
 
     if ((only_p1 && only_p2) && (!m_inputFrames_p1.empty() || !m_inputFrames_p2.empty()))
         return "Please clear replay before loading another";
@@ -278,6 +297,8 @@ std::string ReplayEngine::load(std::string name, bool only_p1, bool only_p2) {
 }
 
 std::string ReplayEngine::save2(std::string name) {
+    if (!is_safe_macro_name(name))
+        return "Invalid macro name";
     std::ofstream file(folderMacroPath / std::string(name + ".re21"), std::ios::binary);
     if (!file)
         return "Failed to open file for writing";

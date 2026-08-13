@@ -4,7 +4,13 @@
 
 # GDH
 
-GDH is an open-source Geometry Dash mod menu that aims to improve the game's performance and add new features
+GDH is an open-source Geometry Dash mod menu that aims to improve the game's performance and add new features.
+
+## PackageMaker classification
+
+This repository is distributed as **AlphaCube** source code. It is not a generic Linux or Windows binary: it requires the **Geode SDK**, Geometry Dash bindings, platform-specific build tooling, and the appropriate FFmpeg libraries for some targets. Build it through the included CMake configuration or the upstream Geode workflow; do not install a prebuilt `.iflapp` as if it were a standalone desktop application.
+
+The replay subsystem validates macro names before constructing paths and checks output-file creation. Names containing path separators, traversal components, unsupported characters, or more than 128 characters are rejected. The static security check can be run with `python3 static_security_check.py`.
 
 Это README также [доступно на русском языке](README.ru.md)
 

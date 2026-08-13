@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app>
+  <publisher>TobyAdd</publisher>
+  <app>gd-modmenu</app>
+  <name>GDH Geometry Dash Mod Menu</name>
+  <version>v5.0.0-beta.8-26.08-23.43-AlphaCube</version>
+  <correlationid>gd-modmenu-geode-source-2026</correlationid>
+  <rate>Todas las edades</rate>
+  <author>TobyAdd</author>
+  <platform>AlphaCube</platform>
+  <description>Código fuente universal de un mod Geode para Geometry Dash; requiere Geode SDK, bindings y herramientas nativas de la plataforma.</description>
+  <year>2026</year>
+</app>
